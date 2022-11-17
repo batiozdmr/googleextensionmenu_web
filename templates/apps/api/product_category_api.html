@@ -1,0 +1,11 @@
+<ul class="nav panel-tabs">
+    <li><a href="#taball" class="active" data-bs-toggle="tab">Hepsi</a>
+    </li>
+    {% for category in product_category %}
+        <li>
+            <a href="#tab{{ category.id }}" data-bs-toggle="tab" class="text-dark">
+                {{ category.text }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
