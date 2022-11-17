@@ -38,11 +38,24 @@ def login_control_login(request):
     return render(request, "apps/api/data.html", context)
 
 
-def mainPageApi(request):
-    products = Products.objects.filter()
+def productData(request):
+    product_list = Products.objects.filter()
     product_category = ProductCategory.objects.filter()
     context = {
-        'products': products,
+        'product_list': product_list,
         'product_category': product_category,
     }
-    return render(request, "apps/api/index_api.html", context)
+    return render(request, "apps/api/product_list_api.html", context)
+
+
+def productCategoryData(request):
+    product_category = ProductCategory.objects.filter()
+    context = {
+        'product_category': product_category,
+    }
+    return render(request, "apps/api/product_category_api.html", context)
+
+
+def userData(request):
+    return render(request, "apps/api/user_index_api.html")
+
