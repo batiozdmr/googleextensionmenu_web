@@ -1,0 +1,120 @@
+{% load static %}
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    Sizin İçin En İyi Sağlığı Bulun
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="text-center chat-image mb-5">
+                    <div class="avatar avatar-xxl chat-profile mb-3 brround" style="margin-left: 10px;">
+                        <a class="" href="#">
+                            <img alt="avatar" src="{% static "assets/images/users/7.jpg" %}"
+                                 class="brround">
+                        </a>
+                    </div>
+                    <div class="main-chat-msg-name">
+                        <a href="#">
+                            <h5 class="mb-1 text-dark fw-semibold">{{ request.user.get_full_name }}</h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body pb-0">
+                <div class="input-group mb-2">
+                    <input type="text" id="search_input" class="form-control"
+                           placeholder="">
+
+                    <span class="input-group-text btn btn-primary">Ara</span>
+                </div>
+                <div class="tabs-menu search-tabs">
+                    <ul class="nav panel-tabs">
+                        <li><a href="#taball" class="active" data-bs-toggle="tab">Hepsi</a>
+                        </li>
+                        {% for category in product_category %}
+                            <li>
+                                <a href="#tab{{ category.id }}" data-bs-toggle="tab" class="text-dark">
+                                    {{ category.text }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body tabs-menu-body p-0 border-0">
+            <div class="tab-content">
+                <div id="no_results" style="display: none;">
+                    No results found
+                </div>
+                <div class="tab-pane active" id="taball">
+                    <div class="row">
+                        {% for product in product_list %}
+                            <div class="col-6 target">
+                                <div class="card">
+                                    <div class="product-grid6">
+                                        <div class="product-image6 p-5">
+                                            <a href="#">
+                                                <img class="img-fluid br-7 w-100"
+                                                     src="{{ product.image.url }}" alt="img">
+                                            </a>
+                                        </div>
+                                        <div class="card-body pt-0">
+                                            <div class="product-content text-center">
+                                                <h1 class="title fw-bold fs-20">
+                                                    <a href="#">{{ product.text }}</a>
+                                                </h1>
+                                                <div class="price">
+                                                    {{ product.price }} TL
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% for category in product_category %}
+                    <div class="tab-pane" id="tab{{ category.id }}">
+                        <div class="row">
+                            {% for product in category.products_list.all %}
+                                <div class="col-6 target">
+                                    <div class="card">
+                                        <div class="product-grid6">
+                                            <div class="product-image6 p-5">
+                                                <a href="#">
+                                                    <img class="img-fluid br-7 w-100"
+                                                         src="{{ product.image.url }}" alt="img">
+                                                </a>
+                                            </div>
+                                            <div class="card-body pt-0">
+                                                <div class="product-content text-center">
+                                                    <h1 class="title fw-bold fs-20">
+                                                        <a href="#">{{ product.text }}</a>
+                                                    </h1>
+                                                    <div class="price">
+                                                        {{ product.price }} TL
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>

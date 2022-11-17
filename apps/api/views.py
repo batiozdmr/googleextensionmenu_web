@@ -1,8 +1,10 @@
 import hashlib
+
 from django.contrib.auth import login
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render
+
+from apps.product.models import *
 
 
 def login_control(request):
@@ -34,3 +36,13 @@ def login_control_login(request):
         'data': data,
     }
     return render(request, "apps/api/data.html", context)
+
+
+def mainPageApi(request):
+    product_list = Products.objects.filter()
+    product_category = ProductCategory.objects.filter()
+    context = {
+        'product_list': product_list,
+        'product_category': product_category,
+    }
+    return render(request, "apps/api/index_api.html", context)
