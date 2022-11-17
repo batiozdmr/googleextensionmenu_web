@@ -6,7 +6,7 @@ from apps.product.models import *
 
 @login_required
 def index(request):
-    products = Products.objects.filter(user=request.user)
+    products = Products.objects.filter()
     product_category = ProductCategory.objects.filter()
     context = {
         'products': products,
