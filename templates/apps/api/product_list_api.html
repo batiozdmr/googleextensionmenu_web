@@ -1,35 +1,10 @@
-<div class="tab-pane active" id="taball">
-    <div class="row">
-        {% for product in product_list %}
-            <div class="col-6 target">
-                <div class="card">
-                    <div class="product-grid6">
-                        <div class="product-image6 p-5">
-                            <a href="#">
-                                <img class="img-fluid br-7 w-100"
-                                     src="{{ product.image.url }}" alt="img">
-                            </a>
-                        </div>
-                        <div class="card-body pt-0">
-                            <div class="product-content text-center">
-                                <h1 class="title fw-bold fs-20">
-                                    <a href="#">{{ product.text }}</a>
-                                </h1>
-                                <div class="price">
-                                    {{ product.price }} TL
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
+<div class="tab-content">
+    <div id="no_results" style="display: none;">
+        No results found
     </div>
-</div>
-{% for category in product_category %}
-    <div class="tab-pane" id="tab{{ category.id }}">
+    <div class="tab-pane active" id="taball">
         <div class="row">
-            {% for product in category.products_list.all %}
+            {% for product in product_list %}
                 <div class="col-6 target">
                     <div class="card">
                         <div class="product-grid6">
@@ -55,4 +30,34 @@
             {% endfor %}
         </div>
     </div>
-{% endfor %}
+    {% for category in product_category %}
+        <div class="tab-pane" id="tab{{ category.id }}">
+            <div class="row">
+                {% for product in category.products_list.all %}
+                    <div class="col-6 target">
+                        <div class="card">
+                            <div class="product-grid6">
+                                <div class="product-image6 p-5">
+                                    <a href="#">
+                                        <img class="img-fluid br-7 w-100"
+                                             src="{{ product.image.url }}" alt="img">
+                                    </a>
+                                </div>
+                                <div class="card-body pt-0">
+                                    <div class="product-content text-center">
+                                        <h1 class="title fw-bold fs-20">
+                                            <a href="#">{{ product.text }}</a>
+                                        </h1>
+                                        <div class="price">
+                                            {{ product.price }} TL
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
