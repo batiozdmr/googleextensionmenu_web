@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    Sizin İçin En İyi Sağlığı Bulun
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="text-center chat-image mb-5">
+                    <div class="avatar avatar-xxl chat-profile mb-3 brround" style="margin-left: 10px;">
+                        <a class="" href="#">
+                            <img alt="avatar" src="{% static "assets/images/users/7.jpg" %}"
+                                 class="brround">
+                        </a>
+                    </div>
+                    <div class="main-chat-msg-name">
+                        <a href="#">
+                            <h5 class="mb-1 text-dark fw-semibold">{{ request.user.get_full_name }}</h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
