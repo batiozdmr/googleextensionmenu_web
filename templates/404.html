@@ -1,0 +1,134 @@
+{% load i18n %}
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="{{ lang }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="robots" content="noindex, follow"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{{ site_settings.seo_title }}{% block head_title %}{% endblock %}</title>
+    {% if page_detail.seo_description %}
+        <meta name="description" content="{{ page_detail.seo_description }}">
+    {% else %}
+        <meta name="description" content="{{ site_settings.seo_description }}">
+    {% endif %}
+
+    {% if page_detail.seo_keywords %}
+        <meta name="keywords" content="{{ page_detail.seo_keywords }}">
+    {% else %}
+        <meta name="keywords" content="{{ site_settings.seo_keywords }}">
+    {% endif %}
+    <!-- Favicon -->
+    <!-- Favicons - Place favicon.ico in the root directory -->
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ site_settings.favicon.url }}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ site_settings.favicon.url }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ site_settings.favicon.url }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ site_settings.favicon.url }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ site_settings.favicon.url }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ site_settings.favicon.url }}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ site_settings.favicon.url }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ site_settings.favicon.url }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ site_settings.favicon.url }}">
+
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ site_settings.favicon.url }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ site_settings.favicon.url }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ site_settings.favicon.url }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ site_settings.favicon.url }}">
+
+    <!-- CSS
+    ============================================ -->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="{% static "assets/css/vendor/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" %}
+    ">
+    <link rel="stylesheet" href="{% static "assets/css/vendor/slick.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/vendor/slick-theme.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/vendor/base.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/plugins/plugins.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/style.css" %}">
+
+    <style>
+        .axil-header .logo a img {
+            max-height: 100%;
+        }
+
+        #backto-top::after {
+            display: none;
+        }
+
+        .fa-arrow-up:before {
+            content: "\f106";
+        }
+
+        .custom_arrow_top {
+            font-style: normal;
+            color: #fff;
+            font-weight: 400;
+            font-size: 26px;
+            line-height: 48px;
+        }
+
+        .custom_arrow_top:hover, .custom_arrow_top:focus, .custom_arrow_top:active {
+            color: #ffffff;
+        }
+
+        .bg_image--4 {
+            background-image: url({% static "assets/images/others/bg-image-4.jpg" %});
+        }
+    </style>
+</head>
+
+<body style="background: #eff0f2;">
+<div class="main-wrapper">
+    <div class="mouse-cursor cursor-outer"></div>
+    <div class="mouse-cursor cursor-inner"></div>
+
+    <!-- Start Error Area  -->
+    <div class="error-area bg_image--4 bg-color-grey">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="inner">
+                        <img src="{% static "assets/images/others/404.png" %}" alt="Error Images">
+                        <h1 class="title">{% trans "Hata, Sayfa Bulunamadı" %}</h1>
+                        <p>{% trans "Maalesef istediğiniz sayfayı bulamıyoruz.<br> Bunun nedeni web adresini yanlış yazmış veya web sayfası kaldırılmış olabilir." %}</p>
+                        <div class="back-totop-button cerchio d-inline-block">
+                            <a class="axil-button button-rounded hover-flip-item-wrapper" href="/">
+                                    <span class="hover-flip-item">
+                                        <span data-text="{% trans "Ana Sayfa" %}">{% trans "Ana Sayfa" %}</span>
+                                    </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Error Area  -->
+</div>
+
+<!-- JS
+============================================ -->
+<!-- Modernizer JS -->
+<script src="{% static "assets/js/vendor/modernizr.min.js" %}"></script>
+<!-- jQuery JS -->
+<script src="{% static "assets/js/vendor/jquery.js" %}"></script>
+<!-- Bootstrap JS -->
+<script src="{% static "assets/js/vendor/bootstrap.min.js" %}"></script>
+<script src="{% static "assets/js/vendor/slick.min.js" %}"></script>
+<script src="{% static "assets/js/vendor/tweenmax.min.js" %}"></script>
+<script src="{% static "assets/js/vendor/js.cookie.js" %}"></script>
+<script src="{% static "assets/js/vendor/jquery.style.switcher.js" %}"></script>
+
+
+<!-- Main JS -->
+<script src="{% static "assets/js/main.js" %}"></script>
+
+</body>
+
+</html>
+

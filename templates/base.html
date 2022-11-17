@@ -1,0 +1,169 @@
+{% load i18n %}
+{% load static %}
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+
+    <!-- META DATA -->
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Sash – Bootstrap 5  Admin & Dashboard Template">
+    <meta name="author" content="Spruko Technologies Private Limited">
+    <meta name="keywords"
+          content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit.">
+
+    <!-- FAVICON -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static "assets/images/brand/favicon.ico" %}"/>
+
+    <!-- TITLE -->
+    <title>File Extension</title>
+
+    <!-- BOOTSTRAP CSS -->
+    <link id="style" href="{% static "assets/plugins/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- STYLE CSS -->
+    <link href="{% static "assets/css/style.css" %}" rel="stylesheet"/>
+    <link href="{% static "assets/css/dark-style.css" %}" rel="stylesheet"/>
+    <link href="{% static "assets/css/transparent-style.css" %}" rel="stylesheet">
+    <link href="{% static "assets/css/skin-modes.css" %}" rel="stylesheet"/>
+
+    <!--- FONT-ICONS CSS -->
+    <link href="{% static "assets/css/icons.css" %}" rel="stylesheet"/>
+
+    <!-- COLOR SKIN CSS -->
+    <link id="theme" rel="stylesheet" type="text/css" media="all" href="{% static "assets/colors/color1.css" %}"/>
+    <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
+</head>
+
+<body class="app sidebar-mini ltr dark-mode">
+
+<!-- GLOBAL-LOADER -->
+<div id="global-loader">
+    <img src="{% static "assets/images/loader.svg" %}" class="loader-img" alt="Loader">
+</div>
+<!-- /GLOBAL-LOADER -->
+
+<!-- PAGE -->
+<div class="page">
+    <div class="page-main">
+        {% block header %}
+            {% include 'partials/header.html' %}
+        {% endblock %}
+
+        {% block content %}
+
+        {% endblock %}
+
+    </div>
+
+
+
+
+
+    {% block footer %}
+        {% include 'partials/footer.html' %}
+    {% endblock %}
+
+</div>
+
+
+<!-- BACK-TO-TOP -->
+<a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+<!-- JQUERY JS -->
+<script src="{% static "assets/js/jquery.min.js" %}"></script>
+
+<!-- BOOTSTRAP JS -->
+<script src="{% static "assets/plugins/bootstrap/js/popper.min.js" %}"></script>
+<script src="{% static "assets/plugins/bootstrap/js/bootstrap.min.js" %}"></script>
+
+<!-- SIDEBAR JS -->
+<script src="{% static "assets/plugins/sidebar/sidebar.js" %}"></script>
+
+<!-- SIDE-MENU JS -->
+<script src="{% static "assets/plugins/sidemenu/sidemenu.js" %}"></script>
+
+<!-- TypeHead js -->
+<script src="{% static "assets/plugins/bootstrap5-typehead/autocomplete.js" %}"></script>
+<script src="{% static "assets/js/typehead.js" %}"></script>
+
+<!-- INTERNAL File-Uploads Js-->
+<script src="{% static "assets/plugins/fancyuploder/jquery.ui.widget.js" %}"></script>
+<script src="{% static "assets/plugins/fancyuploder/jquery.fileupload.js" %}"></script>
+<script src="{% static "assets/plugins/fancyuploder/jquery.iframe-transport.js" %}"></script>
+<script src="{% static "assets/plugins/fancyuploder/jquery.fancy-fileupload.js" %}"></script>
+<script src="{% static "assets/plugins/fancyuploder/fancy-uploader.js" %}"></script>
+
+<!-- Perfect SCROLLBAR JS-->
+<script src="{% static "assets/plugins/p-scroll/perfect-scrollbar.js" %}"></script>
+<script src="{% static "assets/plugins/p-scroll/pscroll.js" %}"></script>
+<script src="{% static "assets/plugins/p-scroll/pscroll-1.js" %}"></script>
+
+<!-- Color Theme js -->
+<script src="{% static "assets/js/themeColors.js" %}"></script>
+
+<!-- Sticky js -->
+<script src="{% static "assets/js/sticky.js" %}"></script>
+
+<!-- CUSTOM JS-->
+<script src="{% static "assets/js/custom.js" %}"></script>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+{% if messages %}
+    {% for message in messages %}
+        {% if forloop.last %}
+            <script>
+                Swal.fire({
+                    position: 'top-right',
+                    icon: '{{ message.tags }}',
+                    title: '{{ message|safe }}',
+                    showConfirmButton: false,
+                    timer: 2300
+                })
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+<script>
+    let image = null;
+
+    function upload() {
+        //Get input from file input
+        let fileinput = document.getElementById("finput");
+        //Make new SimpleImage from file input
+        image = new SimpleImage(fileinput);
+
+        //Get canvas
+        let canvas = document.getElementById("can");
+        //Draw image on canvas
+
+        image.drawTo(canvas);
+    }
+
+    function makeGray() {
+        //change all pixels of image to gray
+        for (var pixel of image.values()) {
+            let avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
+            pixel.setRed(avg);
+            pixel.setGreen(avg);
+            pixel.setBlue(avg);
+        }
+        //display new image
+        let canvas = document.getElementById("can");
+        image.drawTo(canvas);
+    }
+</script>
+
+</body>
+
+</html>
