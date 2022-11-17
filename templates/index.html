@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+    <!--app-content open-->
+    <div class="main-content mt-0">
+        <div class="side-app">
+
+            <!-- CONTAINER -->
+            <div class="main-container container-fluid">
+
+                <!-- PAGE-HEADER -->
+                <div class="page-header">
+                    <h1 class="page-title">{% trans "Dosya Yöneticisi" %}</h1>
+                    <div>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="#">{% trans "Dosya Yöneticisi" %}</a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- PAGE-HEADER END -->
+
+                <!-- Row -->
+                <div class="row row-sm">
+                    <div class="col-md-5 col-lg-5 col-xl-3">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <button class="btn btn-primary btn-block" data-bs-target="#createfile"
+                                        data-bs-toggle="modal">
+                                    <i class="fa fa-plus me-1"></i>
+                                    {% trans "Dosya Yükle" %}
+                                </button>
+                            </div>
+                            <div class="card-body pt-4">
+                                <div class="list-group list-group-transparent mb-0 file-manager">
+                                    {% for item in file_types %}
+                                        <div class="d-flex">
+                                            <div>
+                                                <a href="javascript:void(0);"
+                                                   class="list-group-item  d-flex align-items-center px-0">
+                                                    <i class="{{ item.icon.text }} fs-18 me-2 p-2" style="color: {{ item.color.text }} !important;"></i>{{ item.text }}
+                                                </a>
+                                            </div>
+                                            <div class="text-end ms-auto mt-3">
+                                                <span class="fs-11  text-dark">{{ item.size_count }}</span>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+
+                                    {#                                    <div class="d-flex">#}
+                                    {#                                        <div>#}
+                                    {#                                            <a href="javascript:void(0);"#}
+                                    {#                                               class="list-group-item  d-flex align-items-center px-0">#}
+                                    {#                                                <i class="fa fa-video fs-18 me-2 text-secondary p-2"></i>Videos#}
+                                    {#                                            </a>#}
+                                    {#                                        </div>#}
+                                    {#                                        <div class="text-end ms-auto mt-3">#}
+                                    {#                                            <span class="fs-11  text-dark">32.5 MB</span>#}
+                                    {#                                        </div>#}
+                                    {#                                    </div>#}
+                                    {#                                    <div class="progress progress-xs mb-3 ms-2">#}
+                                    {#                                        <div class="progress-bar bg-secondary" style="width: 40%;"></div>#}
+                                    {#                                    </div>#}
+                                    {#                                    <div class="d-flex">#}
+                                    {#                                        <div>#}
+                                    {#                                            <a href="javascript:void(0);"#}
+                                    {#                                               class="list-group-item  d-flex align-items-center px-0">#}
+                                    {#                                                <i class="fa fa-file-text fs-18 me-2 text-primary p-2"></i> Docs#}
+                                    {#                                            </a>#}
+                                    {#                                        </div>#}
+                                    {#                                        <div class="text-end ms-auto mt-3">#}
+                                    {#                                            <span class="fs-11  text-dark">14.2 MB</span>#}
+                                    {#                                        </div>#}
+                                    {#                                    </div>#}
+                                    {#                                    <div class="progress progress-xs mb-3 ms-2">#}
+                                    {#                                        <div class="progress-bar bg-primary" style="width: 25%;"></div>#}
+                                    {#                                    </div>#}
+                                    {#                                    <div class="d-flex">#}
+                                    {#                                        <div>#}
+                                    {#                                            <a href="javascript:void(0);"#}
+                                    {#                                               class="list-group-item  d-flex align-items-center px-0">#}
+                                    {#                                                <i class="fa fa-music fs-18 me-2 text-warning p-2"></i> Music#}
+                                    {#                                            </a>#}
+                                    {#                                        </div>#}
+                                    {#                                        <div class="text-end ms-auto mt-3">#}
+                                    {#                                            <span class="fs-11  text-dark">13 MB</span>#}
+                                    {#                                        </div>#}
+                                    {#                                    </div>#}
+                                    {#                                    <div class="progress progress-xs mb-3 ms-2">#}
+                                    {#                                        <div class="progress-bar bg-warning" style="width: 30%;"></div>#}
+                                    {#                                    </div>#}
+                                    {#                                    <div class="d-flex">#}
+                                    {#                                        <div>#}
+                                    {#                                            <a href="javascript:void(0);"#}
+                                    {#                                               class="list-group-item  d-flex align-items-center px-0">#}
+                                    {#                                                <i class="fa fa-grid fs-18 me-2 text-danger p-2"></i> More#}
+                                    {#                                            </a>#}
+                                    {#                                        </div>#}
+                                    {#                                        <div class="text-end ms-auto mt-3">#}
+                                    {#                                            <span class="fs-11  text-dark">23 MB</span>#}
+                                    {#                                        </div>#}
+                                    {#                                    </div>#}
+                                    {#                                    <div class="progress progress-xs mb-3 ms-2">#}
+                                    {#                                        <div class="progress-bar bg-danger" style="width: 45%;"></div>#}
+                                    {#                                    </div>#}
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="list-group list-group-transparent mb-0">
+                                    {% for item in file_types %}
+                                        <a href="javascript:void(0);"
+                                           class="list-group-item  d-flex align-items-center px-0 py-2">
+                                            <span class="me-2 fs-12" style="color: {{ item.color.text }} !important;">
+                                                <i class="fa fa-circle"></i>
+                                            </span>
+                                            {{ item.text }}
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-lg-7 col-xl-9">
+                        <div class="text-dark mb-2 ms-1 fs-20 fw-semibold">{% trans "Dosyalar" %}</div>
+                        <div class="row row-sm">
+                            {% for item in files %}
+                                <div class="col-xl-4 col-xxl-3 col-lg-6 col-md-6 col-sm-6">
+                                    <div class="card overflow-hidden">
+                                        <img src="{{ item.file.url }}" alt="{{ item.slug }}" style="max-height: 200px;">
+                                        <div class="card-footer">
+                                            <div class="d-flex">
+                                                <div class="">
+                                                    <h5 class="mb-0 fw-semibold text-break">{{ item.text|truncatechars:20 }}</h5>
+                                                </div>
+                                                <div class="ms-auto my-auto">
+                                                    <span class="text-muted mb-0">{{ item.size }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <!-- End Row -->
+                </div>
+                <!-- End Row -->
+            </div>
+            <!-- CONTAINER CLOSED -->
+
+        </div>
+    </div>
+    <!--app-content closed-->
+
+    <!-- Modal -->
+    <div class="modal" id="createfile">
+        <div class="modal-dialog" role="document">
+            <form method="post" action="{% url "files:file_upload" %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="modal-content modal-content-demo">
+                    <div class="modal-header">
+                        <h6 class="modal-title">{% trans "Yeni Dosya Ekle" %}</h6>
+                        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-12 mb-4 mb-lg-0 d-flex justify-content-center">
+                            <canvas id="can" style="max-height: 200px;">
+                            </canvas>
+                        </div>
+                        <div class="col-12 mb-4 mb-lg-0 d-flex justify-content-center mt-5">
+                            <label id="largeFile" for="file">
+                                <input type="file" name="file_name" id="finput" onchange="upload()"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn ripple btn-primary" type="submit">{% trans "Ekle" %}</button>
+                        <button class="btn ripple btn-danger" data-bs-dismiss="modal"
+                                type="button">{% trans "İptal" %}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- End Modal -->
+{% endblock %}
+

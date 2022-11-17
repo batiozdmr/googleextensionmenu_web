@@ -1,0 +1,105 @@
+{% load static %}
+{% load i18n %}
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="description" content="{{ site_settings.description }}"/>
+    <meta name="keywords" content="{{ site_settings.keywords }}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta property="og:locale" content="tr_TR"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="{{ site_settings.text }} "/>
+    <meta property="og:url" content="{{ site_settings.site }}"/>
+    <meta property="og:site_name" content="{{ site_settings.site }}"/>
+    <link rel="canonical" href="{{ site_settings.site }}"/>
+
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ site_settings.favicon_logo_url }}"/>
+    <link rel="apple-touch-icon" href="{{ site_settings.favicon_logo_url }}">
+
+
+    <!-- Title -->
+    <title>{{ site_settings.text }} | {% block head_title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "assets/fonts/fonts/font-awesome.min.css" %}">
+
+    <!-- Bootstrap Css -->
+    <link href="{% static "assets/plugins/bootstrap-4.3.1-dist/css/bootstrap.min.css" %}" rel="stylesheet"/>
+
+    <!-- Dashboard Css -->
+    <link href="{% static "assets/css/style.css" %}" rel="stylesheet"/>
+
+    <!-- c3.js Charts Plugin -->
+    <link href="{% static "assets/plugins/charts-c3/c3-chart.css" %}" rel="stylesheet"/>
+
+    <!-- Custom scroll bar css-->
+    <link href="{% static "assets/plugins/scroll-bar/jquery.mCustomScrollbar.css" %}" rel="stylesheet"/>
+
+    <!---Font icons-->
+    <link href="{% static "assets/css/icons.css" %}" rel="stylesheet"/>
+
+    <!-- COLOR-SKINS -->
+    <link id="theme" rel="stylesheet" type="text/css" media="all"
+          href="{% static "assets/color-skins/color-skins/color10.css" %}"/>
+
+</head>
+<body class="overflow-hidden construction-image">
+
+<!--Loader-->
+<div id="global-loader">
+    <img src="{% static "assets/images/loader.svg" %}" class="loader-img" alt="">
+</div>
+
+<div class="page page-h">
+    <div class="page-content z-index-10">
+        <div class="container text-center text-white">
+            <div class="display-1 mb-5">{% trans "404" %}</div>
+            <h1 class="h2  mb-3">{% trans "YETKİ HATASI" %}</h1>
+            <p class="h4 font-weight-normal mb-7 leading-normal"></p>
+            <a class="btn btn-secondary" href="/">
+                {% trans "Ana Sayfaya Geri Dön" %}
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<!-- JQuery js-->
+<script src="{% static "assets/js/vendors/jquery-3.2.1.min.js" %}"></script>
+
+<!-- Bootstrap js -->
+<script src="{% static "assets/plugins/bootstrap-4.3.1-dist/js/popper.min.js" %}"></script>
+<script src="{% static "assets/plugins/bootstrap-4.3.1-dist/js/bootstrap.min.js " %}"></script>
+
+<!--JQuery Sparkline Js-->
+<script src="{% static "assets/js/vendors/jquery.sparkline.min.js" %}"></script>
+
+<!-- Circle Progress Js-->
+<script src="{% static "assets/js/vendors/circle-progress.min.js" %}"></script>
+
+<!-- Star Rating Js-->
+<script src="{% static "assets/plugins/rating/jquery.rating-stars.js" %}"></script>
+
+<!-- Custom scroll bar Js-->
+<script src="{% static "assets/plugins/scroll-bar/jquery.mCustomScrollbar.concat.min.js" %}"></script>
+
+<!--Counters -->
+<script src="{% static "assets/plugins/counters/counterup.min.js" %}"></script>
+<script src="{% static "assets/plugins/counters/waypoints.min.js" %}"></script>
+<script src="{% static "assets/plugins/counters/numeric-counter.js" %}"></script>
+
+<!-- Custom Js-->
+<script src="{% static "assets/js/admin-custom.js" %}"></script>
+
+</body>
+</html>
