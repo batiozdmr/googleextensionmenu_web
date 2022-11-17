@@ -1,0 +1,23 @@
+<script>
+    $("#search_input").on("keyup", function () {
+        let input = document.getElementById("search_input");
+        let filter = input.value.toLowerCase();
+        let nodes = document.getElementsByClassName('target');
+        let itemsDisplayed = nodes.length;
+        document.getElementById('no_results').style.display = "none";
+
+        for (i = 0; i < nodes.length; i++) {
+            if (nodes[i].innerText.toLowerCase().includes(filter)) {
+                nodes[i].style.display = "block";
+                itemsDisplayed = itemsDisplayed + 1;
+            } else {
+                nodes[i].style.display = "none";
+                itemsDisplayed = itemsDisplayed - 1;
+            }
+        }
+        if (itemsDisplayed === 0) {
+            console.log(itemsDisplayed)
+            document.getElementById('no_results').style.display = "block";
+        }
+    });
+</script>
